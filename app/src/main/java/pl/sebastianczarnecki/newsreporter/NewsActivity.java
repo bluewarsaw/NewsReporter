@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<NewsItem>> {
+public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<News>> {
 
     private static final int NEWS_LOADER_ID = 1;
 
@@ -38,7 +38,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         ListView newsListView = (ListView) findViewById(R.id.list);
 
-        newsAdapter = new NewsAdapter(this, new ArrayList<NewsItem>());
+        newsAdapter = new NewsAdapter(this, new ArrayList<News>());
 
         newsListView.setAdapter(newsAdapter);
 
@@ -69,12 +69,12 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     }
 
     @Override
-    public Loader<List<NewsItem>> onCreateLoader(int id, Bundle args) {
+    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
         return new NewsLoader(this, NEWS_REQUEST_URL);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<NewsItem>> loader, List<NewsItem> data) {
+    public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
         newsAdapter.clear();
         newsProgressBar.setVisibility(View.GONE);
         newsStatusTV.setText(R.string.empty_list);

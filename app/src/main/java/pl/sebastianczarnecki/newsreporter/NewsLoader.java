@@ -5,7 +5,7 @@ import android.content.Context;
 
 import java.util.List;
 
-public class NewsLoader extends AsyncTaskLoader<List<NewsItem>> {
+public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     String newsUrl;
 
@@ -20,11 +20,11 @@ public class NewsLoader extends AsyncTaskLoader<List<NewsItem>> {
     }
 
     @Override
-    public List<NewsItem> loadInBackground() {
+    public List<News> loadInBackground() {
         if (newsUrl == null) {
             return null;
         }
-        List<NewsItem> result = QueryUtilis.fetchNewsData(newsUrl);
+        List<News> result = QueryUtilis.fetchNewsData(newsUrl);
         return result;
     }
 }

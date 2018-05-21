@@ -25,7 +25,7 @@ public class QueryUtilis {
 
     private QueryUtilis() { }
 
-    public static List<NewsItem> fetchNewsData(String url) {
+    public static List<News> fetchNewsData(String url) {
 
         URL newsUrl = createUrl(url);
 
@@ -37,17 +37,17 @@ public class QueryUtilis {
             e.printStackTrace();
         }
         jsonResponse = initHttpRequest(newsUrl);
-        List<NewsItem> newsItems = extractResultsFromJSON(jsonResponse);
-        return newsItems;
+        List<News> news = extractResultsFromJSON(jsonResponse);
+        return news;
     }
 
-    private static List<NewsItem> extractResultsFromJSON(String newsJSON) {
+    private static List<News> extractResultsFromJSON(String newsJSON) {
 
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
 
-        List<NewsItem> newsItemsArrayList = new ArrayList<>();
+        List<News> newsItemsArrayList = new ArrayList<>();
 
         String titleNews;
         String sectionNews;
@@ -91,7 +91,7 @@ public class QueryUtilis {
                 } else {
                     dateNews = null;
                 }
-                newsItemsArrayList.add(new NewsItem(titleNews, sectionNews, authorNews, dateNews, urlNews));
+                newsItemsArrayList.add(new News(titleNews, sectionNews, authorNews, dateNews, urlNews));
             }
         } catch (JSONException e) {
             e.printStackTrace();

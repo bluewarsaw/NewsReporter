@@ -13,10 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-public class NewsAdapter extends ArrayAdapter<NewsItem> {
+public class NewsAdapter extends ArrayAdapter<News> {
 
-    public NewsAdapter(@NonNull Context context, ArrayList<NewsItem> newsItems) {
-        super(context, 0, newsItems);
+    public NewsAdapter(@NonNull Context context, ArrayList<News> news) {
+        super(context, 0, news);
     }
 
     @NonNull
@@ -28,17 +28,17 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.news_details, parent, false);
         }
 
-        NewsItem currentNewsItem = getItem(position);
-        String date = currentNewsItem.getDateNews();
-        String author = currentNewsItem.getAuthorNews();
+        News currentNews = getItem(position);
+        String date = currentNews.getDateNews();
+        String author = currentNews.getAuthorNews();
 
         LinearLayout listMainLinearLayout = listItemView.findViewById(R.id.main_listview);
 
         TextView titleTextView = (TextView) listItemView.findViewById(R.id.title_tv);
-        titleTextView.setText(currentNewsItem.getTitleNews());
+        titleTextView.setText(currentNews.getTitleNews());
 
         TextView sectionTextView = (TextView) listItemView.findViewById(R.id.section_tv);
-        sectionTextView.setText(currentNewsItem.getSectionNews());
+        sectionTextView.setText(currentNews.getSectionNews());
 
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date_tv);
         checkDateTextView(dateTextView, date);

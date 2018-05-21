@@ -1,6 +1,6 @@
 package pl.sebastianczarnecki.newsreporter;
 
-public class NewsItem {
+public class News {
 
     String titleNews;
     String sectionNews;
@@ -8,7 +8,7 @@ public class NewsItem {
     String dateNews;
     String urlNews;
 
-    public NewsItem(String title, String section, String author, String date, String url) {
+    public News(String title, String section, String author, String date, String url) {
         this.titleNews = title;
         this.sectionNews = section;
         this.authorNews = author;
