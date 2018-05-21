@@ -32,24 +32,24 @@ public class NewsAdapter extends ArrayAdapter<News> {
         String date = currentNews.getDateNews();
         String author = currentNews.getAuthorNews();
 
-        LinearLayout listMainLinearLayout = listItemView.findViewById(R.id.main_listview);
+        TextView authorTextView = (TextView) listItemView.findViewById(R.id.author_tv);
+        checkAuthorTV(authorTextView, author);
 
-        TextView titleTextView = (TextView) listItemView.findViewById(R.id.title_tv);
-        titleTextView.setText(currentNews.getTitleNews());
+        LinearLayout listMainLinearLayout = listItemView.findViewById(R.id.main_listview);
 
         TextView sectionTextView = (TextView) listItemView.findViewById(R.id.section_tv);
         sectionTextView.setText(currentNews.getSectionNews());
 
-        TextView dateTextView = (TextView) listItemView.findViewById(R.id.date_tv);
-        checkDateTextView(dateTextView, date);
+        TextView titleTextView = (TextView) listItemView.findViewById(R.id.title_tv);
+        titleTextView.setText(currentNews.getTitleNews());
 
-        TextView authorTextView = (TextView) listItemView.findViewById(R.id.author_tv);
-        checkAuthorTextView(authorTextView, author);
+        TextView dateTextView = (TextView) listItemView.findViewById(R.id.date_tv);
+        checkDateTV(dateTextView, date);
 
         return listItemView;
     }
 
-    private void checkAuthorTextView(TextView authorTV, String author) {
+    private void checkAuthorTV(TextView authorTV, String author) {
         if (author == null) {
             authorTV.setVisibility(View.GONE);
         } else {
@@ -58,7 +58,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
     }
 
-    private void checkDateTextView(TextView dateTV, String date) {
+    private void checkDateTV(TextView dateTV, String date) {
         if (date == null) {
             dateTV.setVisibility(View.GONE);
         } else {
