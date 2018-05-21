@@ -3,7 +3,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_listview"
-    style="@style/root_list_item_linearlayout">
+    style="@style/list_linearlayout">
 
     <LinearLayout
         style="@style/main_linearlayout">
