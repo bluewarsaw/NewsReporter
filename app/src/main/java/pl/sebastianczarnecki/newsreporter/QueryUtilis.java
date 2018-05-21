@@ -48,15 +48,15 @@ public class QueryUtilis {
         }
 
         List<NewsItem> newsItemsArrayList = new ArrayList<>();
-        
-        String title;
-        String section;
-        String url;
+
+        String titleNews;
+        String sectionNews;
+        String urlNews;
         String firstName;
         String lastName;
-        String author;
-        String rawDate;
-        String date;
+        String authorNews;
+        String rawDateNews;
+        String dateNews;
 
         try {
             JSONObject rootJsonObject = new JSONObject(newsJSON);
@@ -65,9 +65,9 @@ public class QueryUtilis {
 
             for (int i = 0; i < jsonResultsArray.length(); i++) {
                 JSONObject currentJson = jsonResultsArray.getJSONObject(i);
-                title = currentJson.getString("webTitle");
-                section = currentJson.getString("sectionName");
-                url = currentJson.getString("webUrl");
+                titleNews = currentJson.getString("webTitle");
+                sectionNews = currentJson.getString("sectionName");
+                urlNews = currentJson.getString("webUrl");
                 JSONArray tagsArray = currentJson.getJSONArray("tags");
                 if (!tagsArray.isNull(0)) {
                     JSONObject currentTagObj = tagsArray.getJSONObject(0);
@@ -81,17 +81,17 @@ public class QueryUtilis {
                     } else {
                         lastName = null;
                     }
-                    author = getAuthorName(firstName, lastName);
+                    authorNews = getAuthorName(firstName, lastName);
                 } else {
-                    author = null;
+                    authorNews = null;
                 }
                 if (!currentJson.isNull("webPublicationDate")) {
-                    rawDate = currentJson.getString("webPublicationDate");
-                    date = getFormattedDate(rawDate);
+                    rawDateNews = currentJson.getString("webPublicationDate");
+                    dateNews = getFormattedDate(rawDateNews);
                 } else {
-                    date = null;
+                    dateNews = null;
                 }
-                newsItemsArrayList.add(new NewsItem(title, section, author, date, url));
+                newsItemsArrayList.add(new NewsItem(titleNews, sectionNews, authorNews, dateNews, urlNews));
             }
         } catch (JSONException e) {
             e.printStackTrace();
